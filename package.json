@@ -1,0 +1,17 @@
+{
+  "name": "cad_prediction",
+  "version": "1.0.0",
+  "description": "this website will help users predict their chance of having CAD",
+  "main": "app.js",
+  "scripts": {
+    "test": "no"
+  },
+  "author": "Kevin Q.Dao",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "request": "^2.88.2"
+  }
+}
