@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+
+
+    <section class="font container">
+        <div style="width: 80%; margin: auto">
+            <h1>The CAD calculator</h1>
+            <p>Please put your required information in the form below</p>
+            <form class="needs-validation" action="{{ url_for('result')}}" method="post" novalidate>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="validationTooltip01">First name</label>
+                        <input type="text" class="form-control" value="Kevin" name="firstname"
+                            required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationTooltip02">Last name</label>
+                        <input type="text" class="form-control" value="Dao" name="lastname"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label >Number of major vessels (0–3) colored by fluoroscopy (CA)</label>
+                    <input type="number" step="1" min="0" max="3" class="form-control" name="ca" value="2">
+                </div>
+
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-6 pt-0">Chest pain type (CP)</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="cp" id="cp1" value="1" checked>
+                                <label class="form-check-label" for="cp1">
+                                    Typical Angina (1)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="cp" id="cp2" value="2">
+                                <label class="form-check-label" for="cp2">
+                                    Atypical Angina (2)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="cp" id="cp3" value="3">
+                                <label class="form-check-label" for="cp3">
+                                    Non-angina Pain (3)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="cp" id="cp4" value="4">
+                                <label class="form-check-label" for="cp4">
+                                    Asymptomatic (4)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-4 pt-0">Exercise-induced angina (EXANG)</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exang" id="exang1" value="1" checked>
+                                <label class="form-check-label" for="exang1">
+                                    Yes (1)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exang" id="exang2" value="0">
+                                <label class="form-check-label" for="exang2">
+                                    No (0)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Exercise-induced ST depression relative to rest (OLDPEAK) (0-6.2)</label>
+                    <input type="number" step="0.1" min="0" max="6.2" class="form-control" id="OLDPEAK" name="oldpeak" value="1">
+                </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-4 pt-0">SEX</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sex" id="sex1" value="1" checked>
+                                <label class="form-check-label" for="sex1">
+                                    Male (1)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sex" id="sex2" value="0">
+                                <label class="form-check-label" for="sex2">
+                                    Female (0)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-6 pt-0">The slope of the peak exercise ST segment (SLOPE)</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="slope" id="slope1" value="1" checked>
+                                <label class="form-check-label" for="slope1">
+                                    Upsloping (1)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="slope" id="slope2" value="2">
+                                <label class="form-check-label" for="slope2">
+                                    Flat (2)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="slope" id="slope3" value="3">
+                                <label class="form-check-label" for="slope3">
+                                    Downsloping (3)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-6 pt-0">Exercise Thallium heart scan (THAL)</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="thal" id="thal1" value="3" checked>
+                                <label class="form-check-label" for="thal1">
+                                    Normal (3)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="thal" id="thal2" value="6">
+                                <label class="form-check-label" for="thal2">
+                                    Fixed defect (6)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="thal" id="thal3" value="7">
+                                <label class="form-check-label" for="thal3">
+                                    Reversible defect (7)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Duration of exercise test in minutes (THALDUR)</label>
+                    <input type="number" step="0.1" min="0" max="15" class="form-control" id="thaldur" name="thaldur" value="6">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Maximum heart rate achieved (THALACH)</label>
+                    <input type="number" step="1" min="71" max="202" class="form-control" id="thalach" name="thalach" value="149">
+                </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-6 pt-0">Resting electrocardiographic results (RESTECG)</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="restecg" id="res1" value="0" checked>
+                                <label class="form-check-label" for="res1">
+                                    Normal (0)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="restecg" id="res2" value="1">
+                                <label class="form-check-label" for="res2">
+                                    Abnormal (1)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="restecg" id="res3" value="2">
+                                <label class="form-check-label" for="res3">
+                                    Hyper (2)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">AGE (25-80)</label>
+                    <input type="number" step="1" min="25" max="80" class="form-control" id="age" name="age" value="54">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Serum cholesterol in mg/dl (CHOL)</label>
+                    <input type="number" step="1" min="126" max="564" class="form-control" id="chol" name="chol" value="250">
+                </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-6 pt-0">Please Select Model</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="md" id="md1" value="0" checked>
+                                <label class="form-check-label" for="md1">
+                                    SVM Model
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="md" id="md2" value="1">
+                                <label class="form-check-label" for="md2">
+                                    LDA Model
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="md" id="md3" value="2">
+                                <label class="form-check-label" for="md3">
+                                    KNN model
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="md" id="md4" value="3">
+                                <label class="form-check-label" for="md4">
+                                    SVM Model 2
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="md" id="md5" value="4">
+                                <label class="form-check-label" for="md5">
+                                    Voting Model
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="md" id="md6" value="5">
+                                <label class="form-check-label" for="md6">
+                                    Voting Model 2
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-primary btn-block" >Predict</button>
+            </form>
+        </div>
+
+
+    </section>
+
+    {% endblock %}
+  </body>
+</html>

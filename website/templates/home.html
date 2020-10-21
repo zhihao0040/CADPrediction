@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>CAD Prediction</title>
+</head>
+
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+
+    <section class="font container">
+        <h1>Background</h1>
+        <br>
+        <p class="content">
+            These days, cardiovascular diseases is the main cause of death around the world. Coronary artery disease is
+            due to the blockage of arteries when cholesterol and fatty deposits adhere to the wall of arteries and
+            restrict the blood flow. This causes abnormal artery functions. The heart needs more oxygen and vital
+            nutrients to work properly. Due to the lack of normal blood flow, many people experience chest pain referred
+            to as angina. Currently the best and most accurate method for diagnosing angina is angiography. However
+            angiography can be complex and expensive. Researchers are therefore looking for more affordable, simple but
+            still robust and reliable method to predict the occurrence of angina in patients.
+
+        </p>
+        <h1>
+            Goals
+        </h1>
+        <br>
+        <p class="content">
+            The main goal of this project is to develop a predictive model. First, we are trying to use a feature
+            selection to find the most importance features for all subjects. This should be done with several feature
+            selection algorithms. The second goal is to identify predictors (variables) that have the most impact on
+            successful categorization. In this step, students will investigate and evaluate various classifier models
+            and select ones that they think best suit their requirements. Students should be able to discuss and justify
+            decisions made.
+        </p>
+        <br>
+        <hr>
+        <br>
+        <h1>Introduce Team Members</h1>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{url_for('static', filename='TanZhi.png')}} " class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Zhi Tan</h5>
+                            <p class="card-text">Monash Final Year Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{url_for('static', filename='quan.jpg')}}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Quan Dao</h5>
+                            <p class="card-text">Monash Final Year Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{url_for('static', filename='Jie.png')}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Jie Huang</h5>
+                            <p class="card-text">Monash student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <hr>
+        <br>
+        <h1>Explain prediction models</h1>
+        <br>
+        <p> We provide 6 models: SVM, KNN, LDA, SVM 2, Voting, Voting 2</p>
+        <br>
+        <ul>
+            <li>
+                <p>
+                    SVM, KNN and LDA models are implemented using Bagging method with K-cross validation method. The Bagging method helps our training model 
+                    reduce the variance of accuracy while using K-corss validation method
+                </p>
+            </li>
+            <li>
+                <p>
+                    SVM 2 model is implemented using Bagging method with K-cross validation method. But it is trained on input that is the prediction result of SVM, LDA, KNN models
+                </p>
+            </li>
+            <li>
+                <p>
+                    Voting model is implemented using Voting method to improve accuracy and the models list for Voting method includes SVM, KNN, LDA
+                </p>
+            </li>
+            <li>
+                <p>
+                    Voting model is implemented using Voting method to improve accuracy and the models list for Voting method includes SVM, KNN, LDA 
+                    but on the input that is result of SVM, KNN, LDA models
+                </p>
+            </li>
+        </ul>
+    </section>
+    
+
+    {% endblock %}
+</body>
+
+</html>

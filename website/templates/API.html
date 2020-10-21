@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Doc API</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+    <section class="font container">
+        <br>
+        <h2>Instruction for using API</h2>
+        <br>
+        <br>
+        <p>We provide our service to users who want to implement our prediction model for their application via POST API service</p>
+        <p>Exxample code: (test_api.py)</p>
+        <xmp>
+            import requests
+            url = 'http://localhost:5000/predict'
+            body = {
+                    'ca': 2,
+                    'cp': 3,
+                    'exang': 0, 
+                    'oldpeak': 5, 
+                    'sex': 1, 
+                    'slope': 3, 
+                    'thal': 7, 
+                    'thaldur': 11, 
+                    'thalach': 200, 
+                    'restecg': 2, 
+                    'age': 75, 
+                    'chol': 400, 
+                    'md': 1
+                    }
+
+            response = requests.post(url, data=body)
+            print(response.json())
+        </xmp>
+        <p>The output: </p>
+        <xmp>
+            (venv) kevindao@Kevins-MacBook-Pro 3162 % python3 test_api.py
+            1.0
+        </xmp>
+        <br>
+        <hr>
+        <br>
+        <h4>Instruction</h4>
+        <br>
+        <ul>
+            <li>
+                <p>The url is our url of our website.</p>
+            </li>
+            <li>
+                <p>You need to construct a dict (body as in example) to send API post.</p>
+            </li>
+            <li>
+                <p>Send request post to our website.</p>
+            </li>
+        </ul>
+        <br>
+        <hr>
+        <br>
+        <h4>The detail description of feature on body dict</h4>
+        <br>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>ca</td>
+                <td>Number of major vessels colored by fluoroscopy</td>
+                <td>0-3</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>cp</td>
+                <td>Chest pain type</td>
+                <td>1 = typical angina; 2 = atypical angina; 3 = non-angina pain; 4 = asymptomatic</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>exang</td>
+                <td>Exercise-induced angina</td>
+                <td>1 = yes; 0 = no</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>oldpeak</td>
+                <td>Exercise-induced angina</td>
+                <td>0-6.2</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>sex</td>
+                <td>Biological gender</td>
+                <td>1 = male; 0 = female</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>slope</td>
+                <td>The slope of the peak exercise ST segment</td>
+                <td>1 = upsloping; 2 = flat; 3 = downsloping</td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td>thal</td>
+                <td>Exercise Thallium heart scan</td>
+                <td>3 = normal; 6 = fixed defect; 7 = reversible defect</td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
+                <td>thaldur</td>
+                <td>Duration of exercise test in minutes</td>
+                <td>0-15</td>
+              </tr>
+              <tr>
+                <th scope="row">9</th>
+                <td>thalach</td>
+                <td>Maximum heart rate achieved</td>
+                <td>71-202</td>
+              </tr>
+              <tr>
+                <th scope="row">10</th>
+                <td>restecg</td>
+                <td>Resting electrocardiographic results</td>
+                <td>0 = normal; 1 = abnormal; 2 = hyper</td>
+              </tr>
+              <tr>
+                <th scope="row">11</th>
+                <td>age</td>
+                <td>Age in years</td>
+                <td>25-80</td>
+              </tr>
+              <tr>
+                <th scope="row">12</th>
+                <td>chol</td>
+                <td>Serum cholesterol in mg/dl</td>
+                <td>126-564</td>
+              </tr>
+              <tr>
+                <th scope="row">13</th>
+                <td>md</td>
+                <td>The predict model</td>
+                <td>0 = SVM; 1 = LDA; 2 = KNN, 3: SVM 2, 4: voting, 5: voting 2</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <br>
+          <p>The result will be 0 or 1 (0 = no CAD, 1 = CAD)</p>
+    </section>
+    
+
+    {% endblock %}
+  </body>
+</html>
